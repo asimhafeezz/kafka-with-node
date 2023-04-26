@@ -1,13 +1,13 @@
 import { Kafka } from "kafkajs"
 
 const kafka = new Kafka({
-	clientId: "my-app",
+	clientId: "my-first-app",
 	brokers: ["localhost:9092"],
 })
 
 const consumer = kafka.consumer({ groupId: "kafka-testing-group" })
 
-const run = async () => {
+const consume = async () => {
 	await consumer.connect()
 	await consumer.subscribe({ topic: "test-topic", fromBeginning: true })
 
@@ -20,4 +20,4 @@ const run = async () => {
 	})
 }
 
-run().catch(console.error)
+consume().catch(console.error)
