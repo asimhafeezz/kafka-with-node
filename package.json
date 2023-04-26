@@ -1,0 +1,25 @@
+{
+	"name": "kafka-with-node",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start:consumer": "node consumer.js",
+		"start:producer": "node producer.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/asimhafeezz/kafka-with-node.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/asimhafeezz/kafka-with-node/issues"
+	},
+	"homepage": "https://github.com/asimhafeezz/kafka-with-node#readme",
+	"dependencies": {
+		"kafkajs": "^2.2.4"
+	}
+}
