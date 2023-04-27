@@ -1,16 +1,18 @@
-import { Kafka } from "kafkajs"
+import { Kafka, Partitioners } from "kafkajs"
 
 const kafka = new Kafka({
-	clientId: "my-first-app",
+	clientId: "my-producer",
 	brokers: ["localhost:9092"],
 })
 
-const producer = kafka.producer()
+const producer = kafka.producer({
+	createPartitioner: Partitioners.DefaultPartitioner,
+})
 
 const produce = async () => {
 	await producer.connect()
 	await producer.send({
-		topic: "test-topic",
+		topic: "my-topic",
 		messages: [
 			{
 				value: "Hello From Producer!",
@@ -21,5 +23,7 @@ const produce = async () => {
 
 // produce after every 3 seconds
 setInterval(() => {
-	produce().catch(console.error)
+	produce()
+		.then(() => console.log("Message Produced!"))
+		.catch(console.error)
 }, 3000)
